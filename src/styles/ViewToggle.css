@@ -1,0 +1,22 @@
+.view-toggle {
+  display: flex;
+  justify-content: flex-end;
+  margin: 10px 20px;
+}
+
+.view-toggle button {
+  background-color: #ffffff;
+  border: 1px solid #ccc;
+  padding: 6px 10px;
+  cursor: pointer;
+  margin-left: 5px;
+  transition: background-color 0.2s;
+}
+
+.view-toggle button:hover {
+  background-color: #eaeaea;
+}
+
+.view-toggle .active {
+  background-color: #ccc;
+}

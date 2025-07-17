@@ -1,0 +1,27 @@
+.vehicle-table-container {
+  margin: 20px auto;
+  width: 90%;
+  max-width: 1200px;
+  overflow-x: auto;
+}
+
+.vehicle-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.vehicle-table th,
+.vehicle-table td {
+  padding: 12px;
+  border: 1px solid #ddd;
+  text-align: left;
+}
+
+.vehicle-table th {
+  background-color: #f8f8f8;
+  font-weight: bold;
+}
+
+.vehicle-table tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
