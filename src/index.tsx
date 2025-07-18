@@ -1,13 +1,18 @@
 import React from 'react';
-import ReactDOM from 'react-dom/client';
-import { BrowserRouter } from 'react-router-dom';
-import App from './App';
+import { Routes, Route, Navigate } from 'react-router-dom';
+import VehiclePage from './features/vehicles/VehiclePage';
+import NotFoundPage from './features/vehicles/NotFoundPage';
 
-const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
-root.render(
-  <React.StrictMode>
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
-  </React.StrictMode>
-);
+const App: React.FC = () => {
+  return (
+    <div className="app-container">
+      <Routes>
+        <Route path="/" element={<Navigate to="/vehicles" />} />
+        <Route path="/vehicles" element={<VehiclePage />} />
+        <Route path="*" element={<NotFoundPage />} />
+      </Routes>
+    </div>
+  );
+};
+
+export default App;
