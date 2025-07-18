@@ -1,40 +1,46 @@
 import '../styles/Pagination.css';
 import React from 'react';
-import { useAppDispatch } from '../app/hooks';
-import { setPage } from '../features/vehicles/vehicleSlice';
+import { useAppDispatch, useAppSelector } from '../app/hooks';
+import { setPage, setPerPage } from '../features/vehicles/vehicleSlice';
 
 interface PaginationProps {
-  currentPage: number;
   total: number;
-  perPage: number;
-  setCurrentPage: React.Dispatch<React.SetStateAction<number>>;
+  options: number[];
 }
 
-const Pagination: React.FC<PaginationProps> = ({ currentPage, total, perPage }) => {
+const Pagination: React.FC<PaginationProps> = ({ total, options }) => {
   const dispatch = useAppDispatch();
-
+  const { page, perPage } = useAppSelector(s => s.vehicles);
   const totalPages = Math.ceil(total / perPage);
   const pages = Array.from({ length: totalPages }, (_, i) => i + 1);
 
-  const handlePageClick = (page: number) => {
-    dispatch(setPage(page));
+  const go = (p: number) => {
+    if (p >= 1 && p <= totalPages) dispatch(setPage(p));
   };
 
-  if (totalPages <= 1) return null;
+  const changePerPage = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    dispatch(setPerPage(Number(e.target.value)));
+    dispatch(setPage(1));
+  };
 
   return (
-    <div className="flex gap-2 mt-4 justify-center">
-      {pages.map((page) => (
+    <div className="pagination">
+      <button onClick={() => go(1)} disabled={page === 1}>Начало</button>
+      <button onClick={() => go(page - 1)} disabled={page === 1}>←</button>
+      {pages.map(p => (
         <button
-          key={page}
-          onClick={() => handlePageClick(page)}
-          className={`px-3 py-1 rounded ${
-            currentPage === page ? 'bg-blue-600 text-white' : 'bg-gray-200'
-          }`}
-        >
-          {page}
-        </button>
+          key={p}
+          className={p === page ? 'active' : ''}
+          onClick={() => go(p)}
+        >{p}</button>
       ))}
+      <button onClick={() => go(page + 1)} disabled={page === totalPages}>→</button>
+      <button onClick={() => go(totalPages)} disabled={page === totalPages}>Конец</button>
+      <button onClick={() => dispatch(setPerPage(total))}>Все</button>
+
+      <select value={perPage} onChange={changePerPage}>
+        {options.map(n => <option key={n} value={n}>{n}/стр</option>)}
+      </select>
     </div>
   );
 };

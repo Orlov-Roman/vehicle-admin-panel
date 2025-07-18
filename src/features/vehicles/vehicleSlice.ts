@@ -99,6 +99,9 @@ const vehicleSlice = createSlice({
       state.search = action.payload;
       state.page = 1;
     },
+    setPerPage(state, action: PayloadAction<number>) {
+      state.perPage = action.payload;
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -124,5 +127,5 @@ const vehicleSlice = createSlice({
   },
 });
 
-export const { setPage, setMode, setSearch } = vehicleSlice.actions;
+export const { setPage, setMode, setSearch, setPerPage } = vehicleSlice.actions;
 export default vehicleSlice.reducer;

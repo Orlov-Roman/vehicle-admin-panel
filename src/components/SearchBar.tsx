@@ -1,18 +1,23 @@
 import '../styles/SearchBar.css';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useAppDispatch } from '../app/hooks';
 import { setSearch, setPage } from '../features/vehicles/vehicleSlice';
 
-interface Props {
+interface SearchBarProps {
   searchQuery: string;
   setSearchQuery: (value: string) => void;
 }
 
-const SearchBar: React.FC<Props> = ({ searchQuery, setSearchQuery }) => {
+const SearchBar: React.FC<SearchBarProps> = ({ searchQuery, setSearchQuery }) => {
   const [input, setInput] = useState(searchQuery);
   const dispatch = useAppDispatch();
 
+  useEffect(() => {
+    setInput(searchQuery);
+  }, [searchQuery]);
+
   const handleSearch = () => {
+    setSearchQuery(input);
     dispatch(setPage(1));
     dispatch(setSearch(input));
   };
