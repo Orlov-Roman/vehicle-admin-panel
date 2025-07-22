@@ -1,26 +1,39 @@
+/* Контейнер пагинации */
 .pagination {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 4px;
-  justify-content: center;
-  margin: 16px 0;
+  display: flex;             /* Используем flexbox для выстраивания кнопок в ряд */
+  flex-wrap: wrap;           /* Позволяем переносить кнопки на следующую строку, если не помещаются */
+  gap: 4px;                  /* Отступы между кнопками и элементами */
+  justify-content: center;   /* Центрируем кнопки по горизонтали */
+  margin: 16px 0;            /* Отступ сверху и снизу от блока пагинации */
 }
-.pagination button, .pagination select {
-  padding: 6px 10px;
-  border: 1px solid #ccc;
-  background: #f8f8f8;
-  cursor: pointer;
-  transition: background 0.2s;
+
+/* Общие стили для кнопок и селекта в пагинации */
+.pagination button,
+.pagination select {
+  padding: 6px 10px;           /* Внутренние отступы для кликабельности и удобства */
+  border: 1px solid #ccc;      /* Светло-серая граница */
+  background: #f8f8f8;         /* Светлый фон */
+  cursor: pointer;             /* Курсор "рука" при наведении */
+  transition: background 0.2s; /* Плавное изменение фона при наведении */
+  font-size: 1rem;             /* Удобочитаемый размер шрифта */
+  border-radius: 4px;          /* Немного скруглённые углы для современного вида */
 }
+
+/* Эффект наведения на кнопки, которые не активны и не отключены */
 .pagination button:hover:not(.active):not(:disabled) {
-  background: #e0e0e0;
+  background: #e0e0e0; /* Немного темнее фон при наведении */
 }
+
+/* Активная страница выделена синим фоном и белым текстом */
 .pagination .active {
-  background: #007bff;
-  color: white;
-  font-weight: bold;
+  background: #007bff;    /* Яркий синий фон */
+  color: white;           /* Белый текст */
+  font-weight: bold;      /* Жирный шрифт */
+  cursor: default;        /* Курсор по умолчанию, так как кнопка активна */
 }
+
+/* Отключённые кнопки становятся полупрозрачными и курсор меняется */
 .pagination button:disabled {
-  opacity: 0.5;
-  cursor: default;
+  opacity: 0.5;          /* Полупрозрачность для визуального отключения */
+  cursor: default;       /* Стандартный курсор, показывающий, что клик недоступен */
 }

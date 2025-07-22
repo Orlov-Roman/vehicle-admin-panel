@@ -1,45 +1,69 @@
+/* Контейнер таблицы — добавляем горизонтальный скролл, если таблица шире контейнера */
 .vehicle-table-container {
-  overflow-x: auto;
-  margin: 20px 0;
+  overflow-x: auto;         /* Позволяет прокручивать таблицу по горизонтали */
+  margin: 20px 0;           /* Отступы сверху и снизу */
 }
 
+/* Основные стили таблицы */
 .vehicle-table {
-  width: 100%;
-  border-collapse: collapse;
+  width: 100%;              /* Таблица занимает всю ширину контейнера */
+  border-collapse: collapse; /* Убирает двойные границы между ячейками */
+  font-size: 14px;          /* Размер шрифта для текста в таблице */
+  border-radius: 6px;       /* Скругление углов таблицы */
+  overflow: hidden;         /* Обрезаем все, что выходит за рамки (важно для скругления) */
 }
 
-.vehicle-table th, .vehicle-table td {
-  padding: 12px;
-  border: 1px solid #ddd;
-  text-align: left;
+/* Стили для заголовков и ячеек */
+.vehicle-table th,
+.vehicle-table td {
+  padding: 12px 16px;       /* Внутренние отступы для комфорта чтения */
+  border: 1px solid #e0e0e0; /* Светло-серая граница вокруг ячеек */
+  text-align: left;         /* Выравнивание текста по левому краю */
 }
 
+/* Заголовки — выделяем светлым фоном и делаем шрифт полужирным */
 .vehicle-table th {
-  background: #f4f4f4;
-  font-weight: 600;
+  background: #f0f4f8;      /* Светлый фон заголовка */
+  font-weight: 600;         /* Жирный шрифт */
 }
 
+/* Чередование строк для удобства чтения */
 .vehicle-table tr:nth-child(even) {
-  background: #fafafa;
+  background: #fafafa;      /* Очень светлый фон для четных строк */
 }
 
+/* Подсветка строки при наведении */
 .vehicle-table tr:hover {
-  background: #e6f7ff;
+  background: #e6f7ff;      /* Светло-голубой фон при наведении курсора */
 }
 
+/* Стили кнопки "Сохранить все изменения" */
 .save-all-btn {
-  padding: 6px 10px;
-  border: 1px solid #ccc;
-  background: #f8f8f8;
-  cursor: pointer;
-  transition: background 0.2s;
-  margin-top: 10px;
+  padding: 8px 14px;        /* Внутренние отступы */
+  border: 1px solid #007bff; /* Синяя рамка */
+  background: #007bff;      /* Синий фон */
+  color: white;             /* Белый цвет текста */
+  font-size: 14px;          /* Размер шрифта */
+  border-radius: 6px;       /* Скругленные углы */
+  cursor: pointer;          /* Курсор руки */
+  transition: background 0.2s; /* Плавное изменение фона */
+  margin-top: 10px;         /* Отступ сверху */
 }
-.save-all-btn button:hover:not(.active):not(:disabled) {
-  background: #e0e0e0;
+
+/* Эффект наведения на кнопку */
+.save-all-btn:hover {
+  background: #0056b3;      /* Темно-синий фон */
 }
-.save-all-btn .active {
-  background: #007bff;
-  color: white;
-  font-weight: bold;
+
+/* Стили для отключённой кнопки */
+.save-all-btn:disabled {
+  background: #ccc;         /* Серый фон */
+  border-color: #aaa;       /* Более светлая рамка */
+  color: #666;              /* Тёмно-серый текст */
+  cursor: not-allowed;      /* Курсор "запрещено" */
+}
+
+/* Дополнительная защита от эффекта наведения для отключённой кнопки */
+.save-all-btn.disabled:hover {
+  background: #ccc;         /* Сохраняем серый фон при наведении */
 }

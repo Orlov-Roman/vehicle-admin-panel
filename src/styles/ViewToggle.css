@@ -1,24 +1,34 @@
+/* Контейнер для переключателей — горизонтальное расположение и небольшой отступ между кнопками */
+.view-toggle {
+  display: flex;        /* Горизонтальный флекс-контейнер */
+  gap: 8px;             /* Расстояние между кнопками */
+}
+
+/* Общие стили для всех кнопок переключателя */
 .view-toggle button {
-  padding: 8px 12px;
-  border: 1px solid #007bff;
-  background: #007bff;
-  color: white;
-  cursor: pointer;
-  transition: background 0.2s;
+  padding: 8px 12px;            /* Внутренние отступы для удобства клика */
+  border-radius: 6px;           /* Скругление углов кнопок */
+  border: 1px solid #007bff;    /* Синяя рамка */
+  font-size: 14px;              /* Размер текста */
+  background: #007bff;          /* По умолчанию — синий фон */
+  color: white;                 /* Белый цвет текста */
+  cursor: pointer;              /* Курсор в виде руки */
+  transition: background 0.2s; /* Плавное изменение фона при наведении и смене состояний */
 }
 
+/* Кнопки, которые НЕ активны, имеют светлый фон и синий текст */
 .view-toggle button:not(.active) {
-  background: #fff;
-  color: #007bff;
+  background: #fff;         /* Белый фон для неактивных кнопок */
+  color: #007bff;           /* Синий цвет текста */
 }
 
-.search-bar button:hover,
+/* Эффект наведения для неактивных кнопок — легкий голубой фон */
 .view-toggle button:hover:not(.active) {
-  background: #0056b3;
-  color: white;
+  background: #e6f0ff;      /* Светло-голубой фон при наведении */
 }
 
+/* Активная кнопка — более тёмный синий фон и белый текст */
 .view-toggle button.active {
-  background: #0056b3;
-  color: white;
+  background: #0056b3;      /* Тёмно-синий фон для активной кнопки */
+  color: white;             /* Белый цвет текста */
 }

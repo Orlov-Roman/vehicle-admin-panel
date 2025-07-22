@@ -1,40 +1,43 @@
+/* Контейнер для строки управления (например, поиск и переключатели) */
 .controls-row {
-  display: flex;
-  gap: 10px;
-  align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  margin: 20px;
+  display: flex;                  /* Горизонтальный флекс-контейнер */
+  gap: 10px;                     /* Отступы между элементами */
+  align-items: center;           /* Вертикальное выравнивание по центру */
+  justify-content: space-between; /* Размещаем элементы с максимальным расстоянием между ними */
+  flex-wrap: wrap;               /* Позволяем переносить элементы на новую строку при узком экране */
+  margin: 20px;                  /* Отступы вокруг всего блока */
 }
 
+/* Поле ввода поиска */
 .search-bar input {
-  width: 250px;
-  padding: 8px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
+  width: 250px;                  /* Фиксированная ширина для удобства */
+  padding: 8px 12px;             /* Внутренние отступы для комфортного ввода */
+  border: 1px solid #ccc;        /* Светло-серая рамка */
+  border-radius: 6px;            /* Скруглённые углы для современного вида */
+  font-size: 14px;               /* Оптимальный размер шрифта */
+  outline: none;                 /* Убираем стандартное обведение при фокусе */
+  transition: border-color 0.2s; /* Плавное изменение цвета рамки */
 }
 
+/* При фокусе на input меняем цвет рамки */
+.search-bar input:focus {
+  border-color: #007bff;         /* Ярко-синий цвет рамки при фокусе */
+}
+
+/* Кнопка поиска */
 .search-bar button {
-  padding: 8px 12px;
-  border: 1px solid #007bff;
-  background: #007bff;
-  color: white;
-  cursor: pointer;
-  transition: background 0.2s;
+  padding: 8px 12px;             /* Внутренние отступы */
+  border: 1px solid #007bff;     /* Синяя рамка */
+  background: #007bff;           /* Синий фон */
+  color: white;                  /* Белый текст */
+  border-radius: 6px;            /* Скругления углов */
+  font-size: 14px;               /* Размер шрифта */
+  cursor: pointer;               /* Курсор в виде руки */
+  transition: background 0.2s;  /* Плавный переход фона при наведении */
+  margin-left: 10px;             /* Отступ слева для разделения от input */
 }
 
-.view-toggle button:not(.active) {
-  background: #fff;
-  color: #007bff;
-}
-
-.search-bar button:hover,
-.view-toggle button:hover:not(.active) {
-  background: #0056b3;
-  color: white;
-}
-
-.view-toggle button.active {
-  background: #0056b3;
-  color: white;
+/* При наведении цвет кнопки становится темнее */
+.search-bar button:hover {
+  background: #0056b3;           /* Темно-синий фон */
 }
